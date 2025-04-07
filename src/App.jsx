@@ -1,18 +1,19 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import { Button } from "./components/ui/button";
+import { BrowserRouter as Router, Route, Routes } from "react-router";
+import AuthLayout from "./layouts/AuthLayout";
+import LoginPage from "./pages/auth/LoginPage";
+import RegistrationPage from "./pages/auth/RegistrationPage";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div className="flex flex-col items-center justify-center min-h-svh">
-        <Button>Click me</Button>
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegistrationPage />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
